@@ -15,7 +15,7 @@
             --secondary-neutral: #C9C6C1; /* Beige très clair (Accent secondaire/Survol) */
             --off-white: #FAF9F6; /* Blanc cassé, très doux (Fond principal) */
             --light-gray-bg: #F5F5F0; /* Gris très très clair (Fond des sections alternées) */
-            --subtle-accent: #EBEBE3; /* Nouvelle couleur pour l'animation de fond */
+            --subtle-accent: #EBEBE3; /* Couleur pour l'animation de fond */
             --dark-text: #3D3D3D; 
             --medium-text: #606060; 
             --white-color: #ffffff;
@@ -24,7 +24,7 @@
         }
 
         /* ---------------------------------------------------- */
-        /* NOUVELLE ANIMATION DE FOND */
+        /* ANIMATION DE FOND (conservée) */
         /* ---------------------------------------------------- */
         
         body {
@@ -36,10 +36,9 @@
             scroll-behavior: smooth;
             overflow-x: hidden;
 
-            /* Styles pour le fond animé */
             background: linear-gradient(270deg, var(--off-white), var(--light-gray-bg), var(--subtle-accent), var(--light-gray-bg));
-            background-size: 400% 400%; /* Définit la taille du dégradé */
-            animation: BackgroundAnimation 15s ease infinite; /* Applique l'animation */
+            background-size: 400% 400%; 
+            animation: BackgroundAnimation 15s ease infinite; 
         }
 
         @keyframes BackgroundAnimation {
@@ -55,6 +54,27 @@
         }
         /* ---------------------------------------------------- */
 
+        /* ---------------------------------------------------- */
+        /* NOUVEAUX STYLES POUR "FADE-IN ON SCROLL" */
+        /* ---------------------------------------------------- */
+        .scroll-reveal {
+            opacity: 0; /* Caché par défaut */
+            transform: translateY(20px); /* Légèrement déplacé vers le bas */
+            transition: opacity 1s ease-out, transform 0.8s ease-out; /* Transition douce */
+        }
+
+        .scroll-reveal.active {
+            opacity: 1; /* Rendu visible */
+            transform: translateY(0); /* Remonté à sa position initiale */
+        }
+
+        /* Ajout de délais progressifs pour un effet plus esthétique */
+        .scroll-reveal:nth-child(1) { transition-delay: 0s; }
+        .scroll-reveal:nth-child(2) { transition-delay: 0.1s; }
+        .scroll-reveal:nth-child(3) { transition-delay: 0.2s; }
+        .scroll-reveal:nth-child(4) { transition-delay: 0.3s; }
+        .scroll-reveal:nth-child(5) { transition-delay: 0.4s; }
+        /* ---------------------------------------------------- */
 
         .container {
             max-width: 1000px;
@@ -131,28 +151,18 @@
             left: 0;
         }
 
-        /* Animations d'apparition (conservées) */
+        /* ANCIENNES animations (retirées car remplacées par scroll-reveal) */
+        /*
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInSlideUp 0.8s ease-out forwards;
         }
 
-        @keyframes fadeInSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        @keyframes fadeInSlideUp { ... }
         section:nth-of-type(1) .fade-in { animation-delay: 0.2s; }
-        section:nth-of-type(2) .fade-in { animation-delay: 0.4s; }
-        section:nth-of-type(3) .fade-in { animation-delay: 0.6s; }
-        section:nth-of-type(4) .fade-in { animation-delay: 0.8s; }
+        ...
+        */
 
 
         /* Styles spécifiques pour l'image de profil */
@@ -161,7 +171,7 @@
             height: 180px; 
             border-radius: 50%; 
             object-fit: cover;
-            object-position: center 30%; /* Décalage de la photo à l'intérieur du cadre */
+            object-position: center 30%; 
             margin-top: 30px; 
             margin-bottom: 25px;
             border: 8px solid var(--secondary-neutral); 
@@ -177,13 +187,12 @@
         section {
             padding: 70px 0;
             text-align: center;
-            /* Utiliser une couleur de fond solide pour les sections pour qu'elles se démarquent de l'arrière-plan animé */
             background-color: var(--white-color);
             margin-top: 30px;
             box-shadow: 0 6px 20px var(--soft-shadow);
             border-radius: var(--border-radius-soft);
             overflow: hidden;
-            position: relative; /* Nécessaire pour l'empilement */
+            position: relative;
         }
 
         section:nth-of-type(odd) { 
@@ -228,7 +237,6 @@
         }
 
         .hero {
-            /* Garde l'image de fond pour la section principale */
             background: linear-gradient(135deg, rgba(140, 148, 157, 0.7), rgba(96, 96, 96, 0.6)), url('https://source.unsplash.com/random/1200x600/?calm,children,gray,peace') no-repeat center center/cover;
             color: var(--white-color);
             padding: 140px 0; 
@@ -403,7 +411,7 @@
 <body>
 
     <header>
-        <div class="container fade-in">
+        <div class="container">
             <h1>Éléa Thorel</h1>
             <p>Psychologue du Développement</p>
             <nav>
@@ -418,33 +426,33 @@
     </header>
 
     <main>
-        <section id="accueil" class="hero fade-in">
+        <section id="accueil" class="hero scroll-reveal">
             <div class="container">
-                <img src="elea.png" alt="Photo de profil d'Éléa Thorel, Psychologue du Développement à Abbeville" class="profile-img">
+                <img src="index.png" alt="Photo de profil d'Éléa Thorel, Psychologue du Développement à Abbeville" class="profile-img scroll-reveal">
                 
-                <h2>Accompagnement et Soutien pour un Développement Harmonieux</h2>
-                <p>Spécialisée dans les parcours de l'enfant et de l'adolescent, je vous accueille à Abbeville pour un soutien bienveillant.</p>
-                <a href="#contact" class="cta-button">Prendre Contact</a>
+                <h2 class="scroll-reveal">Accompagnement et Soutien pour un Développement Harmonieux</h2>
+                <p class="scroll-reveal">Spécialisée dans les parcours de l'enfant et de l'adolescent, je vous accueille à Abbeville pour un soutien bienveillant.</p>
+                <a href="#contact" class="cta-button scroll-reveal">Prendre Contact</a>
             </div>
         </section>
 
-        <section id="presentation" class="about fade-in">
+        <section id="presentation" class="about scroll-reveal">
             <div class="container">
-                <h3>Qui suis-je ?</h3>
-                <p>Je suis **Éléa Thorel**, psychologue du développement diplômée. Ma pratique est dédiée à la compréhension des défis psycho-éducatifs et relationnels durant l'enfance et l'adolescence, en privilégiant l'empathie et une approche respectueuse des besoins individuels.</p>
+                <h3 class="scroll-reveal">Qui suis-je ?</h3>
+                <p class="scroll-reveal">Je suis **Éléa Thorel**, psychologue du développement diplômée. Ma pratique est dédiée à la compréhension des défis psycho-éducatifs et relationnels durant l'enfance et l'adolescence, en privilégiant l'empathie et une approche respectueuse des besoins individuels.</p>
                 
-                <h4>Mon Engagement à Abbeville : ITEP & SESSAD</h4>
-                <p>Mon expérience au sein de l'**ITEP** (Institut Thérapeutique, Éducatif et Pédagogique) et du **SESSAD** (Service d'Éducation Spéciale et de Soins à Domicile) d'Abbeville me permet d'offrir une expertise solide dans l'accompagnement des enfants et adolescents présentant des difficultés spécifiques (comportementales, émotionnelles, troubles du neurodéveloppement...).</p>
+                <h4 class="scroll-reveal">Mon Engagement à Abbeville : ITEP & SESSAD</h4>
+                <p class="scroll-reveal">Mon expérience au sein de l'**ITEP** (Institut Thérapeutique, Éducatif et Pédagogique) et du **SESSAD** (Service d'Éducation Spéciale et de Soins à Domicile) d'Abbeville me permet d'offrir une expertise solide dans l'accompagnement des enfants et adolescents présentant des difficultés spécifiques (comportementales, émotionnelles, troubles du neurodéveloppement...).</p>
                 
-                <a href="#" class="cta-button">En savoir plus sur mon parcours</a> </div>
+                <a href="#" class="cta-button scroll-reveal">En savoir plus sur mon parcours</a> </div>
         </section>
 
-        <section id="services" class="services fade-in">
+        <section id="services" class="services scroll-reveal">
             <div class="container">
-                <h3>Mon Approche et les Services Proposés</h3>
-                <p>Mon travail est centré sur l'écoute active, le respect du rythme de chacun, et la collaboration étroite avec la famille ainsi qu'avec les différents partenaires (école, médecins, etc.).</p>
+                <h3 class="scroll-reveal">Mon Approche et les Services Proposés</h3>
+                <p class="scroll-reveal">Mon travail est centré sur l'écoute active, le respect du rythme de chacun, et la collaboration étroite avec la famille ainsi qu'avec les différents partenaires (école, médecins, etc.).</p>
                 
-                <div class="service-list">
+                <div class="service-list scroll-reveal">
                     <ul>
                         <li>Évaluations psychométriques (bilans intellectuels, de développement et neuropsychologiques)</li>
                         <li>Soutien psychologique individuel pour enfants et adolescents</li>
@@ -457,20 +465,20 @@
             </div>
         </section>
 
-        <section id="contact" class="contact fade-in">
+        <section id="contact" class="contact scroll-reveal">
             <div class="container">
-                <h3>Contact et Informations Pratiques</h3>
-                <p>Je suis disponible pour des consultations sur rendez-vous à mon cabinet d'Abbeville, dans un environnement calme et propice à l'échange.</p>
+                <h3 class="scroll-reveal">Contact et Informations Pratiques</h3>
+                <p class="scroll-reveal">Je suis disponible pour des consultations sur rendez-vous à mon cabinet d'Abbeville, dans un environnement calme et propice à l'échange.</p>
                 
-                <p><strong>Lieu de pratique :</strong></p>
-                <address>
+                <p class="scroll-reveal"><strong>Lieu de pratique :</strong></p>
+                <address class="scroll-reveal">
                     [Votre Adresse Précise]<br>
                     80100 Abbeville<br>
                     (Somme)
                 </address>
 
-                <p><strong>Pour prendre rendez-vous ou pour toute question :</strong></p>
-                <ul>
+                <p class="scroll-reveal"><strong>Pour prendre rendez-vous ou pour toute question :</strong></p>
+                <ul class="scroll-reveal">
                     <li><span role="img" aria-label="Téléphone">📞</span> Téléphone : <a href="tel:VOTRE_NUMERO_ICI">[Votre Numéro de Téléphone]</a></li>
                     <li><span role="img" aria-label="Email">✉️</span> Email : <a href="mailto:contact@eleathorel.fr">contact@eleathorel.fr</a></li>
                     <li>
@@ -483,11 +491,36 @@
     </main>
 
     <footer>
-        <div class="container fade-in">
+        <div class="container scroll-reveal">
             <p>&copy; 2025 Éléa Thorel - Psychologue du Développement. Tous droits réservés.</p>
             <p><a href="#">Mentions Légales</a> | <a href="#">Politique de Confidentialité</a></p>
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const elementsToObserve = document.querySelectorAll('.scroll-reveal');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // L'élément est visible dans le viewport (fenêtre d'affichage)
+                        entry.target.classList.add('active');
+                        // Optionnel : arrêter d'observer l'élément une fois qu'il est apparu
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                // Racine (viewport)
+                root: null,
+                // Marge pour déclencher l'événement plus tôt/tard
+                rootMargin: '0px',
+                // Seuil : déclencher quand l'élément est visible à 10%
+                threshold: 0.1 
+            });
+
+            elementsToObserve.forEach(el => observer.observe(el));
+        });
+    </script>
 </body>
 </html>
