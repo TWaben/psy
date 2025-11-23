@@ -151,19 +151,6 @@
             left: 0;
         }
 
-        /* ANCIENNES animations (retirées car remplacées par scroll-reveal) */
-        /*
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInSlideUp 0.8s ease-out forwards;
-        }
-
-        @keyframes fadeInSlideUp { ... }
-        section:nth-of-type(1) .fade-in { animation-delay: 0.2s; }
-        ...
-        */
-
 
         /* Styles spécifiques pour l'image de profil */
         .profile-img {
@@ -426,9 +413,9 @@
     </header>
 
     <main>
-        <section id="accueil" class="hero scroll-reveal">
+        <section id="accueil" class="hero"> 
             <div class="container">
-                <img src="index.png" alt="Photo de profil d'Éléa Thorel, Psychologue du Développement à Abbeville" class="profile-img scroll-reveal">
+                <img src="{EA0D0DAD-190E-4340-8CFA-C2631CD0E609}.jpg" alt="Photo de profil d'Éléa Thorel, Psychologue du Développement à Abbeville" class="profile-img scroll-reveal">
                 
                 <h2 class="scroll-reveal">Accompagnement et Soutien pour un Développement Harmonieux</h2>
                 <p class="scroll-reveal">Spécialisée dans les parcours de l'enfant et de l'adolescent, je vous accueille à Abbeville pour un soutien bienveillant.</p>
@@ -499,6 +486,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Sélectionne tous les éléments qui doivent apparaître
             const elementsToObserve = document.querySelectorAll('.scroll-reveal');
 
             const observer = new IntersectionObserver((entries) => {
@@ -506,16 +494,16 @@
                     if (entry.isIntersecting) {
                         // L'élément est visible dans le viewport (fenêtre d'affichage)
                         entry.target.classList.add('active');
-                        // Optionnel : arrêter d'observer l'élément une fois qu'il est apparu
+                        // Arrêter d'observer l'élément une fois qu'il est apparu
                         observer.unobserve(entry.target);
                     }
                 });
             }, {
                 // Racine (viewport)
                 root: null,
-                // Marge pour déclencher l'événement plus tôt/tard
-                rootMargin: '0px',
-                // Seuil : déclencher quand l'élément est visible à 10%
+                // **CORRECTION POUR MOBILE** : Déclencher 50px avant que l'élément n'atteigne le bas de l'écran.
+                rootMargin: '0px 0px -50px 0px', 
+                // Seuil : Déclencher lorsque l'élément est visible à 10%
                 threshold: 0.1 
             });
 
