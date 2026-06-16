@@ -1102,6 +1102,26 @@ section[id], .legal-section { scroll-margin-top: 80px; }
 .legal-box a { color: var(--clay); }
 .legal-divider, .modal-divider { width: 48px; height: 2px; background: linear-gradient(90deg,var(--sage),var(--clay)); border-radius: 2px; margin: .6rem 0 1.2rem; }
 
+
+    @media (max-width: 768px) {
+      .accom-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+      }
+      .accom-card {
+        padding: 1.8rem 1.5rem;
+      }
+      .motifs-list {
+        columns: 2;
+        gap: 0.5rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .motifs-list {
+        columns: 1;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -1126,7 +1146,7 @@ section[id], .legal-section { scroll-margin-top: 80px; }
     <div class="divider"></div>
   </div>
 
-  <div class="accom-grid" style="grid-template-columns: 1fr 1fr; grid-template-rows: auto auto;">
+  <div class="accom-grid">
 
     <div class="accom-card fade-in visible">
       <span class="accom-emoji">🧒</span>

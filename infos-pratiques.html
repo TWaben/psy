@@ -641,13 +641,13 @@
 
   /* INFOS PRATIQUES */
   .infos-section {
-    background: var(--ink);
-    color: white;
+    background: var(--sage-pale);
+    color: var(--ink);
   }
 
-  .infos-section .section-eyebrow { color: rgba(255,255,255,0.6); }
-  .infos-section .section-title { color: white; }
-  .infos-section .section-title em { color: white; }
+  .infos-section .section-eyebrow { color: var(--clay); }
+  .infos-section .section-title { color: var(--ink); }
+  .infos-section .section-title em { color: var(--sage); }
 
   .infos-grid {
     display: grid;
@@ -658,14 +658,15 @@
   }
 
   .info-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: white;
+    border: 1px solid var(--border);
     border-radius: 1rem;
     padding: 2rem;
-    transition: background 0.2s;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s;
   }
 
-  .info-card:hover { background: rgba(255,255,255,0.08); }
+  .info-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.09); }
 
   .info-card-icon {
     font-size: 1.6rem;
@@ -676,15 +677,15 @@
   .info-card h3 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.2rem;
-    font-weight: 300;
-    color: white;
+    font-weight: 500;
+    color: var(--ink);
     margin-bottom: 1rem;
   }
 
   .info-card p, .info-card li {
     font-size: 0.85rem;
     line-height: 1.8;
-    color: rgba(255,255,255,0.65);
+    color: var(--ink-soft);
   }
 
   .info-card ul { list-style: none; }
@@ -692,7 +693,7 @@
   .info-card li::before {
     content: '–';
     margin-right: 0.5rem;
-    color: var(--sage-light);
+    color: var(--sage);
   }
 
   .tarif-row {
@@ -700,27 +701,27 @@
     justify-content: space-between;
     align-items: baseline;
     padding: 0.6rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid var(--border);
   }
 
   .tarif-row:last-of-type { border-bottom: none; }
 
-  .tarif-name { font-size: 0.83rem; color: rgba(255,255,255,0.65); }
+  .tarif-name { font-size: 0.83rem; color: var(--ink-soft); }
 
   .tarif-price {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.3rem;
-    font-weight: 300;
-    color: var(--sage-light);
+    font-weight: 400;
+    color: var(--clay);
   }
 
   .tarif-note {
     font-size: 0.75rem;
-    color: rgba(255,255,255,0.45);
+    color: var(--ink-soft);
     margin-top: 1rem;
     line-height: 1.6;
     padding: 0.75rem;
-    background: rgba(255,255,255,0.04);
+    background: var(--sage-pale);
     border-radius: 0.5rem;
     border-left: 2px solid var(--sage);
   }
@@ -1145,11 +1146,11 @@ section[id], .legal-section { scroll-margin-top: 80px; }
       <span class="info-card-icon">💶</span>
       <h3>Tarifs</h3>
       <div class="tarif-row">
-        <span class="tarif-name">Séance individuelle<br><small style="color:rgba(255,255,255,0.4)">45 minutes</small></span>
+        <span class="tarif-name">Séance individuelle<br><small style="color:var(--ink-soft)">45 minutes</small></span>
         <span class="tarif-price">55 €</span>
       </div>
       <div class="tarif-row">
-        <span class="tarif-name">Soutien à la parentalité<br><small style="color:rgba(255,255,255,0.4)">1 heure</small></span>
+        <span class="tarif-name">Soutien à la parentalité<br><small style="color:var(--ink-soft)">1 heure</small></span>
         <span class="tarif-price">60 €</span>
       </div>
       <p class="tarif-note">

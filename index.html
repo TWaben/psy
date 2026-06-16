@@ -994,7 +994,7 @@
 
     .hero {
       grid-template-columns: 1fr;
-      padding: 90px 1.5rem 3rem;
+      padding: 20px 1.5rem 3rem;
       gap: 2.5rem;
     }
 
@@ -1026,7 +1026,7 @@
 
     /* Hero */
     .hero {
-      padding: 72px 1rem 2.5rem;
+      padding: 20px 1rem 2.5rem;
       gap: 2rem;
     }
     .hero h1 { font-size: 2.2rem; }
@@ -1101,6 +1101,18 @@ section[id], .legal-section { scroll-margin-top: 80px; }
 .legal-box ul { padding-left: 1.2rem; margin: .4rem 0; }
 .legal-box a { color: var(--clay); }
 .legal-divider, .modal-divider { width: 48px; height: 2px; background: linear-gradient(90deg,var(--sage),var(--clay)); border-radius: 2px; margin: .6rem 0 1.2rem; }
+
+
+    /* ── MOBILE: photo cabinet auto-height ─── */
+    @media (max-width: 768px) {
+      .hero-photos { height: auto !important; }
+      .photo-slot:first-child { height: auto !important; min-height: 220px; }
+      .photo-slot:first-child img { width: 100%; height: auto !important; object-fit: contain; border-radius: 1rem; }
+    }
+    @media (max-width: 480px) {
+      .hero-photos { height: auto !important; }
+      .photo-slot:first-child { height: auto !important; min-height: 180px; }
+    }
 
 </style>
 </head>
