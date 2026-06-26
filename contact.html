@@ -1169,7 +1169,8 @@ envoyez-moi un e-mail — je vous recontacterai dans les meilleurs délais.
     </div>
 
     <div class="fade-in" style="transition-delay:0.12s;">
-      <form class="contact-form" action="https://formspree.io/f/mojbaoko" method="POST">
+      <form class="contact-form" name="contact" method="POST" data-netlify="true" id="contactForm">
+        <input type="hidden" name="form-name" value="contact">
         <div class="form-row">
           <div class="form-group">
             <label for="nom">Nom</label>
@@ -1182,7 +1183,7 @@ envoyez-moi un e-mail — je vous recontacterai dans les meilleurs délais.
         </div>
         <div class="form-group">
           <label for="email">E-mail</label>
-          <input type="email" id="email" name="_replyto" placeholder="votre@email.fr" required="">
+          <input type="email" id="email" name="email" placeholder="votre@email.fr" required="">
         </div>
         <div class="form-group">
           <label for="tel">Téléphone</label>
@@ -1202,13 +1203,38 @@ envoyez-moi un e-mail — je vous recontacterai dans les meilleurs délais.
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Décrivez brièvement votre demande…"></textarea>
         </div>
-        <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous — Cabinet Éléa Thorel">
-        <input type="hidden" name="_language" value="fr">
         <button type="submit" class="form-submit">Envoyer le message →</button>
         <div class="form-success" id="formSuccess">
           ✓ Message envoyé ! Je vous recontacterai très prochainement.
         </div>
       </form>
+
+      <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+          e.preventDefault();
+          const form = e.target;
+          const data = new FormData(form);
+          const btn = form.querySelector('.form-submit');
+          btn.disabled = true;
+          btn.textContent = 'Envoi…';
+
+          fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(data).toString()
+          })
+            .then(() => {
+              document.getElementById('formSuccess').style.display = 'block';
+              btn.style.display = 'none';
+              form.reset();
+            })
+            .catch(() => {
+              alert("Une erreur est survenue, merci de réessayer ou de m'écrire directement par e-mail.");
+              btn.disabled = false;
+              btn.textContent = 'Envoyer le message →';
+            });
+        });
+      </script>
     </div>
   </div>
 </section>
